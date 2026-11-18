@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     <head><title>CampusConnect</title></head>
 
@@ -17,4 +17,42 @@
         </nav>
         <main>{% block content %}{% endblock %}</main>
     </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FreshBatch | Local Produce Microsharing</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        nav { display: flex; gap: 1rem; align-items: center; border-bottom: 1px solid #ccc; padding-bottom: 1rem; margin-bottom: 1.5rem; }
+        .msg { padding: 0.75rem; background: #e6ffed; border: 1px solid #34d058; margin-bottom: 1rem; }
+        .errorlist { color: #d73a49; }
+    </style>
+</head>
+<body>
+    <nav>
+        <strong>FreshBatch</strong>
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+            <a href="{% url 'profile' %}">My Profile</a>
+            <span>({{ user.username }} - {{ user.get_role_display }})</span>
+            <form method="post" action="{% url 'logout' %}" style="margin-left:auto;">
+                {% csrf_token %}
+                <button type="submit">Log out</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}">Log in</a>
+            <a href="{% url 'signup' %}">Sign up</a>
+        {% endif %}
+    </nav>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="msg">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <main>{% block content %}{% endblock %}</main>
+</body>
 </html>

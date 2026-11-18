@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Consumer Dashboard</h2>
+<p>Welcome, {{ user.first_name|default:user.username }}! Browse discounted surplus baked goods near {{ user.address|default:"your area" }}.</p>
+<ul>
+    <li><strong>Available Surplus Batches:</strong> Coming in Phase 2</li>
+    <li><strong>My Active Reservations:</strong> 0 items</li>
+</ul>
+{% endblock %}

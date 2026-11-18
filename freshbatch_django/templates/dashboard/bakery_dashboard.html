@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Bakery Owner Dashboard — {{ user.bakery_name|default:user.username }}</h2>
+<p>Manage your daily surplus inventory and track customer pickup reservations.</p>
+<ul>
+    <li><strong>Active Surplus Listings:</strong> 0 batches</li>
+    <li><strong>Pending Pickups:</strong> 0 reservations</li>
+</ul>
+{% endblock %}
